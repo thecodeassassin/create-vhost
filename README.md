@@ -15,16 +15,16 @@ Then execute the script (with the optional parameters):
 
 $ ./create-vhost.py
 
-Usage: create-vhost.py [options]
-
-Options:
-  -h, --help            show this help message and exit
-  -i, --interactive     Run this script interactively
-  -d DOMAIN, --domain=DOMAIN
-                        Set the domain of this vhost
-  -w WWW_DIR, --www_dir=WWW_DIR
-                        Set the root directory for this vhost
-  -g GIT_URL, --git_url=GIT_URL
-                        Set the GIT repository URL
-  -y                    Assume yes to all queries and do not prompt (unless
-                        going interactive)
+    Usage: create-vhost.py [options]
+    
+    Options:
+      -h, --help            show this help message and exit
+      -i, --interactive     Run this script interactively
+      -d DOMAIN, --domain=DOMAIN
+                            Set the domain of this vhost
+      -w WWW_DIR, --www_dir=WWW_DIR
+                            Set the root directory for this vhost
+      -g GIT_URL, --git_url=GIT_URL
+                            Set the GIT repository URL
+      -y                    Assume yes to all queries and do not prompt (unless
+                            going interactive)
