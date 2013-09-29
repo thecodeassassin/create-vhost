@@ -10,14 +10,18 @@ git_url = None
 do_git_checkout = False
 assume_yes = False
 
+cwd = os.path.dirname(os.path.realpath(__file__))
+vhost_tpl_path = cwd+'/vhost.tpl'
+
 if not os.access('/etc/hosts', os.W_OK):
     exit('Cannot write to /etc/hosts, please run this script as root or with sudo')
 
-if not os.access('vhost.tpl', os.W_OK):
+if not os.access(vhost_tpl_path, os.W_OK):
+    print vhost_tpl_path
     exit('Cannot read vhost template file!')
 
 cfg = ConfigParser.ConfigParser()
-configfile = 'create-vhost.ini'
+configfile = cwd+'/create-vhost.ini'
 
 print '--- Create vhost script for Apache2 ---'
 print '--- Copyright Stephen Hoogendijk 2013, Licensed under the GPL V2 License ---'
@@ -97,7 +101,7 @@ def create_vhost():
 
 
     # read the template and replace the variables
-    vhost_tpl = open('vhost.tpl', 'r').read()
+    vhost_tpl = open(vhost_tpl_path, 'r').read()
 
 
     vhost_tpl = vhost_tpl.replace('{APACHE_PORT}', str(apache_port))
