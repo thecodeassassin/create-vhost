@@ -1,7 +1,13 @@
 #!/usr/bin/env python
-from _socket import getservbyport
-from subprocess import Popen
+"""
+Vhost creation script for Apache2 vhosts
 
+Author: Stephen Hoogendijk
+
+Licensed under the GPL V2 License
+"""
+
+from _socket import getservbyport
 import optparse, re, os, time, urllib2, ConfigParser, subprocess
 
 domain = None
@@ -24,7 +30,7 @@ cfg = ConfigParser.ConfigParser()
 configfile = cwd+'/create-vhost.ini'
 
 print '--- Create vhost script for Apache2 ---'
-print '--- Copyright Stephen Hoogendijk 2013, Licensed under the GPL V2 License ---'
+print '--- Author: Stephen Hoogendijk, Licensed under the GPL V2 License ---'
 print
 
 if not os.path.exists(configfile):
@@ -158,7 +164,7 @@ def _check_vhost():
         exit('The apache port is not valid!')
 
     # validate the given domain name
-    if not re.match("^(([a-zA-Z0-9]+([\-])?[a-zA-Z0-9]+)+(\.)?)+[a-zA-Z]{2,6}$", str(domain)) and 'www' not in domain:
+    if not re.match("^(([a-zA-Z0-9]+([\-])?[a-zA-Z0-9]+)+(\.)?)+[a-zA-Z]{2,6}$", str(domain)) or 'www' in domain:
         exit('Domain not valid: %s. Please enter a domain without www' % domain)
 
     # check the git repo if it has been set
